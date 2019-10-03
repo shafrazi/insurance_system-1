@@ -1,0 +1,31 @@
+<%= form_for(@insurance_policy) do |f| %>
+  
+  <div class="form-group">
+    <%= f.label :policyno %>
+    <%= f.text_field :policyno, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :insurer %>
+    <%= f.text_field :insurer, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :value %>
+    <%= f.text_field :value, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :insurance_type %>
+    <%= f.text_field :insurance_type, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_expiry %>
+    <%= f.date_select :current_expiry, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

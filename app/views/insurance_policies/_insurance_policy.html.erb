@@ -1,0 +1,27 @@
+  <table class="table table-bordered" style="width: 50%;">
+    <tr>
+      <th>Policy No: </th>
+      <td>
+        <%= link_to "#{insurance_policy.policyno}", insurance_policy %>
+        </td>
+      </tr>
+      <tr>
+        <th>Insurer:  </th>
+        <td>
+          <%= insurance_policy.insurer %>
+          </td>
+        </tr>
+        <tr>
+          <th>Policy Value:  </th>
+          <td>
+            <%= insurance_policy.value %>
+            </td>
+          </tr>
+          <tr>
+            <th>Current Expiry:  </th>
+            <td>
+              <%= insurance_policy.current_expiry %>
+              </td>
+            </tr>
+
+    </table>

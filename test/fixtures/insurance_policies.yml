@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  policyno: MyString
+  insurer: MyString
+  value: 9.99
+  insurance_type: MyString
+  current_expiry: 2018-12-15
+  customer: one
+
+two:
+  policyno: MyString
+  insurer: MyString
+  value: 9.99
+  insurance_type: MyString
+  current_expiry: 2018-12-15
+  customer: two

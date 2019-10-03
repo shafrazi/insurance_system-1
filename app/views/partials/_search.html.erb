@@ -1,0 +1,22 @@
+<% if params[:controller] == "insurance_policies" %>
+  <%= form_tag(insurance_policies_path, method: :get, id: "search-form", class: "form-inline my-2 my-lg-0") do %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], placeholder: "Search Insurance Policies", class: "form-control mr-sm-2" %>
+    </div>
+    <%= submit_tag "Search", name: nil, class: "btn btn-secondary my-2 my-sm-0" %>
+  <% end %>
+<% elsif params[:controller] == "customers" %>
+  <%= form_tag(customers_path, method: :get, id: "search-form", class: "form-inline my-2 my-lg-0") do %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], placeholder: "Search Customers", class: "form-control mr-sm-2" %>
+    </div>
+    <%= submit_tag "Search", name: nil, class: "btn btn-secondary my-2 my-sm-0" %>
+  <% end %>
+<% elsif params[:controller] == "renewals" %>
+  <%= form_tag(renewals_path, method: :get, id: "search-form", class: "form-inline my-2 my-lg-0") do %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], placeholder: "Search Renewals", class: "form-control mr-sm-2" %>
+    </div>
+    <%= submit_tag "Search", name: nil, class: "btn btn-secondary my-2 my-sm-0" %>
+  <% end %>
+<% end %>

@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Customer Details
+    </div>
+    <div class="card-body">
+      <table class="table table-borderless">
+        <tr>
+          <th>Name: </th>
+          <td><%= @customer.name %></td>
+        </tr>
+        <tr>
+          <th>Address: </th>
+            <td><%= @customer.address %></td>
+          </tr>
+      </table>
+    </div>
+
+  </div>
+    <br />
+    <div class="card card-body bg-light">
+      <%= form_for(@customer) do |f| %>
+      <%= f.fields_for :insurance_policies do |policy| %>
+      <%= render "insurance_policy_fields", :f => policy %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association "Add Insurance Policy", f, :insurance_policies, class: "btn btn-success", role: "button" %>
+
+        <%= link_to 'Edit', edit_customer_path(@customer), class: "btn btn-warning", role: "button" %>
+        <%= link_to 'Back', customers_path, class: "btn btn-warning", role: "button" %>
+      </div
+      <% end %>
+    </div>
+    <br />
+    <br />
+
+    <div class="card card-body bg-light">
+      <p>
+        <% if @customer.insurance_policies.any? %>
+      </p>
+        <h4>Insurance Policies in force</h4>
+      <p>
+        <table class="table table-striped table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>Policy No</th>
+              <th>Insurer</th>
+              <th>Value</th>
+              <th>Insurance type</th>
+              <th>Current expiry</th>
+              <th colspan="4"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @insurance_policies.each do |insurance_policy| %>
+              <tr>
+                <td><%= insurance_policy.policyno %></td>
+                <td><%= insurance_policy.insurer %></td>
+                <td><%= insurance_policy.value %></td>
+                <td><%= insurance_policy.insurance_type %></td>
+                <td><%= insurance_policy.current_expiry %></td>
+                <td><%= link_to 'Show', insurance_policy %></td>
+                <td><%= link_to 'Edit', edit_insurance_policy_path(insurance_policy) %></td>
+                <td><%= link_to 'Destroy', insurance_policy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "Renew policy", {controller: "renewals", action: "policy_index_renew", insurance_policy_id: insurance_policy.id}, method: :get %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+      </p>
+    </div>
+  </div>

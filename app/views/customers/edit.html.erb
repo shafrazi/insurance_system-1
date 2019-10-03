@@ -1,0 +1,11 @@
+<div class="card card-body bg-light">
+  <h1>Editing Customer</h1>
+
+  <%= render 'form', customer: @customer %>
+  <br />
+  <div class="form-group">
+    <%= link_to 'Show', @customer, class: "btn btn-warning", role: "button" %>
+    <%= link_to 'Back', customers_path, class: "btn btn-warning", role: "button" %>
+  </div>
+
+</div>

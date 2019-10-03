@@ -1,0 +1,40 @@
+<div class="card card-body bg-light">
+  <h3>New Renewal</h3>
+  <%= form_for(@renewal) do |f| %>
+    <% if @renewal.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(renewal.errors.count, "error") %> prohibited this renewal from being saved:</h4>
+
+        <ul>
+        <% @renewal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :policyno, "Policy No" %>
+      <%= f.text_field :policyno, class: "form-control", value: @insurance_policy.policyno %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :begin_date %>
+      <%= f.date_select :begin_date, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :expiry_date %>
+      <%= f.date_select :expiry_date, class: "form-control" %>
+    </div>
+
+    <div class="form-group" style="display:none;">
+      <%= f.label :insurance_policy_id %>
+      <%= f.text_field :insurance_policy_id, class: "form-control", value: @insurance_policy.id %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

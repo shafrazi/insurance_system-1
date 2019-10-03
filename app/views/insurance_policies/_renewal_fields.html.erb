@@ -1,0 +1,24 @@
+<div>
+    <% if f.object.new_record? %>
+    <div class='nested-fields well'>
+        <div class="form-group">
+          <%= f.label :policyno, "Policy No" %>
+          <%= f.text_field :policyno, class: "form-control", value: @insurance_policy.policyno %>
+        </div>
+        <div class="form-group">
+          <%= f.label :begin_date %>
+          <%= f.date_select :begin_date, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :expiry_date %>
+          <%= f.date_select :expiry_date, class: "form-control" %>
+        </div>
+        <div>
+
+          <%= f.submit "Save", class: "btn btn-primary" %>
+          <%= link_to_remove_association "Remove Insurance Renewal", f, class: "btn btn-danger", role: "button" %>
+        </div>
+        <br />
+      </div>
+      <% end %>
+</div>

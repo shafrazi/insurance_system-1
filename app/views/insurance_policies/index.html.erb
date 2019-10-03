@@ -1,0 +1,56 @@
+<div class="card card-body bg-light">
+  <h3>Search form</h3>
+
+  <%= form_tag(insurance_policies_path, method: :get, class: "form-inline my-2 my-lg-0") do %>
+    <div class="form-group">
+      <%= date_field_tag :search_date, params[:search_date], class: "form-control mr-sm-2", data: {provide: "datepicker"}, placeholder: "Enter date" %>
+    </div>
+    <div class="actions">
+      <%= submit_tag "Search", class: "btn btn-secondary my-2 my-sm-", name: nil %>
+    </div>
+
+  <% end %>
+
+</div>
+<br /><br />
+<h2 class="page-header">Insurance Policies <section class="float-right"><%= link_to "Add New Insurance Policy", new_insurance_policy_path, class: "btn btn-success"%> <%= link_to "Add Insurance Renewal", new_renewal_path, class: "btn btn-success" %></section></h2>
+<br />
+<table class="table table-sm">
+<thead class="thead-dark">
+  <tr>
+    <th>Policy No</th>
+    <th>Insurer</th>
+    <th>Value</th>
+    <th>Insurance type</th>
+    <th>Current expiry</th>
+    <th>Customer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @insurance_policies.each do |insurance_policy| %>
+    <% if is_expired?(insurance_policy) %>
+      <tr class="table-danger">
+      <% else %>
+        <tr>
+        <% end %>
+        <td><%= insurance_policy.policyno %></td>
+        <td><%= insurance_policy.insurer %></td>
+        <td><%= insurance_policy.value %></td>
+        <td><%= insurance_policy.insurance_type %></td>
+        <td><%= insurance_policy.current_expiry %></td>
+        <td><%= link_to "#{insurance_policy.customer.name}", insurance_policy.customer %></td>
+        <td><%= link_to 'Show', insurance_policy %></td>
+        <td><%= link_to 'Edit', edit_insurance_policy_path(insurance_policy) %></td>
+        <td><%= link_to 'Destroy', insurance_policy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to "Renew policy", {controller: "renewals", action: "policy_index_renew"}, params: {insurance_policy_id: insurance_policy.id}, method: :get, class: "btn btn-primary btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
