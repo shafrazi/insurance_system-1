@@ -69,7 +69,6 @@ class InsurancePoliciesController < ApplicationController
     end
   end
 
-  # DELETE /insurance_policies/1
   # DELETE /insurance_policies/1.json
   def destroy
     @insurance_policy.destroy
