@@ -49,7 +49,7 @@ class RenewalsController < ApplicationController
         format.html { redirect_to @renewal, notice: 'Renewal was successfully updated.' }
         format.json { render :show, status: :ok, location: @renewal }
         # update policy no and expiry of parent policy only if current renewal is the latest renewal
-        if @renewal == @insurance_policy.renewals.last
+        if @renewal == @insurance_policy.renewals.first
           @insurance_policy.update_attributes(current_expiry: @renewal.expiry_date, policyno: @renewal.policyno)
         end
       else
@@ -74,7 +74,7 @@ class RenewalsController < ApplicationController
       else
         @renewal.destroy
         respond_to do |format|
-          format.html { redirect_to insurance_policy_path(@insurance_policy), notice: 'Renewal was successfully destroyed.' }
+          format.html { redirect_to insurance_policy_path(@insurance_policy), notice: 'Renewal was successfully deleted.' }
           format.json { head :no_content }
         end
       end
